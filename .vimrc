@@ -17,3 +17,5 @@ vnoremap <Leader>p "+p
 nnoremap <Leader>P "+P
 vnoremap <Leader>P "+P
 
+filetype plugin indent on
+
