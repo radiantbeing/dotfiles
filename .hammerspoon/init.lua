@@ -1,7 +1,9 @@
 local ENABLED_APPS = {
-  ["com.mitchellh.ghostty"] = true,
+  ["com.google.Chrome"] = true,
   ["com.jetbrains.intellij"] = true,
   ["com.microsoft.VSCode"] = true,
+  ["com.mitchellh.ghostty"] = true,
+  ["md.obsidian"] = true,
 }
 
 local INPUT_ENGLISH = "com.apple.keylayout.ABC"
