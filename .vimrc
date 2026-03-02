@@ -5,7 +5,6 @@ set autoindent smartindent
 set tabstop=4 shiftwidth=4
 set hlsearch
 set colorcolumn=100,120
-set nrformats=
 
 let mapleader = " "
 nnoremap <Leader>y "+y
@@ -19,6 +18,7 @@ call plug#begin()
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 
 call plug#end()
