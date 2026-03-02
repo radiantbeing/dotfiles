@@ -7,8 +7,6 @@ set hlsearch
 set colorcolumn=100,120
 set nrformats=
 
-syntax enable
-
 let mapleader = " "
 nnoremap <Leader>y "+y
 vnoremap <Leader>y "+y
@@ -17,5 +15,11 @@ vnoremap <Leader>p "+p
 nnoremap <Leader>P "+P
 vnoremap <Leader>P "+P
 
-filetype plugin indent on
+call plug#begin()
+
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
+Plug 'tpope/vim-commentary'
+
+call plug#end()
 
