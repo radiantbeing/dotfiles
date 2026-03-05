@@ -1,3 +1,6 @@
 [submodule "/Users/inhwa/.vim/pack/tpope/start/vim-sensible"]
 	path = /Users/inhwa/.vim/pack/tpope/start/vim-sensible
 	url = https://github.com/tpope/vim-sensible
+[submodule "/Users/inhwa/.vim/pack/catppuccin/start/catppuccin"]
+	path = /Users/inhwa/.vim/pack/catppuccin/start/catppuccin
+	url = https://github.com/catppuccin/vim.git
