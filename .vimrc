@@ -23,6 +23,7 @@ vnoremap <Leader>P "+P
 
 call plug#begin()
 
+Plug 'dense-analysis/ale'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'kana/vim-textobj-user'
