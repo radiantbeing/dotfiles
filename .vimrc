@@ -8,7 +8,6 @@ set colorcolumn=100,120
 
 " Key bindings
 
-let mapleader = " "
 nnoremap <Leader>y "+y
 vnoremap <Leader>y "+y
 nnoremap <Leader>p "+p
