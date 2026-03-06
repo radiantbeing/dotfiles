@@ -20,3 +20,34 @@ set colorcolumn=100,120 " 텍스트 정렬을 위한 강조선
 set incsearch " 문자 입력에 따른 즉각적 검색
 set hlsearch " 검색 결과 강조
 
+" LSP
+packadd lsp
+
+call LspAddServer([#{
+    \   name: 'vimls',
+    \   filetype: 'vim',
+    \   path: 'vim-language-server',
+    \   args: ['--stdio']
+    \   }])
+
+call LspAddServer([#{
+    \   name: 'typescriptlang',
+    \   filetype: ['javascript', 'typescript'],
+    \   path: 'typescript-language-server',
+    \   args: ['--stdio']
+    \   }])
+
+nnoremap K <Cmd>LspHover<CR>l
+nnoremap <C-]> <Cmd>LspGotoDefinition<CR>
+nnoremap gd <Cmd>execute v:count .. 'LspGotoDefinition'<CR>
+nnoremap <C-W>gd <Cmd>execute 'topleft ' .. v:count .. 'LspGotoDefinition'<CR>
+nnoremap g] <Cmd>LspPeekDefinition<CR>
+nnoremap gi <Cmd>LspGotoImpl<CR>
+nnoremap gt <Cmd>LspGotoTypeDef<CR>
+
+nnoremap gq <Plug>(LspFormat)
+xnoremap gq <Plug>(LspFormat)
+
+xnoremap <silent> <Leader>e <Cmd>LspSelectionExpand<CR>
+xnoremap <silent> <Leader>s <Cmd>LspSelectionShrink<CR>
+
