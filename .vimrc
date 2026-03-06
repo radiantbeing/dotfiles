@@ -37,7 +37,7 @@ call LspAddServer([#{
     \   args: ['--stdio']
     \   }])
 
-nnoremap K <Cmd>LspHover<CR>l
+nnoremap K <Cmd>LspHover<CR>
 nnoremap <C-]> <Cmd>LspGotoDefinition<CR>
 nnoremap gd <Cmd>execute v:count .. 'LspGotoDefinition'<CR>
 nnoremap <C-W>gd <Cmd>execute 'topleft ' .. v:count .. 'LspGotoDefinition'<CR>
