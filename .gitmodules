@@ -4,3 +4,6 @@
 [submodule ".vim/pack/catppuccin/start/catppuccin"]
 	path = .vim/pack/catppuccin/start/catppuccin
 	url = https://github.com/catppuccin/vim.git
+[submodule ".vim/pack/yegappan/opt/lsp"]
+	path = .vim/pack/yegappan/opt/lsp
+	url = https://github.com/yegappan/lsp
