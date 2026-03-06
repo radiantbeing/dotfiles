@@ -51,3 +51,8 @@ xnoremap gq <Plug>(LspFormat)
 xnoremap <silent> <Leader>e <Cmd>LspSelectionExpand<CR>
 xnoremap <silent> <Leader>s <Cmd>LspSelectionShrink<CR>
 
+augroup LspCustom
+    autocmd!
+    autocmd CursorMoved * silent! LspDiag! current
+augroup END
+
