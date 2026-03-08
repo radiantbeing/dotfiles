@@ -8,19 +8,6 @@ local ENABLED_APPS = {
 
 local INPUT_ENGLISH = "com.apple.keylayout.ABC"
 
-local ctrlBracketHotkey
-local appFocusWatcher
-
-local function getFrontmostBundleId()
-  local app = hs.application.frontmostApplication()
-  return app and app:bundleID() or nil
-end
-
-local function shouldEnableForFrontApp()
-  local bundleId = getFrontmostBundleId()
-  return bundleId and ENABLED_APPS[bundleId] == true
-end
-
 local function switchToEnglishIfNeeded()
   if hs.keycodes.currentSourceID() ~= INPUT_ENGLISH then
     hs.keycodes.currentSourceID(INPUT_ENGLISH)
@@ -32,6 +19,18 @@ local function handleCtrlBracketReleased()
   hs.eventtap.keyStroke({}, "escape")
 end
 
+local ctrlBracketHotkey = hs.hotkey.new({ "ctrl" }, "[", nil, handleCtrlBracketReleased)
+
+local function getFrontmostBundleId()
+  local app = hs.application.frontmostApplication()
+  return app and app:bundleID() or nil
+end
+
+local function shouldEnableForFrontApp()
+  local bundleId = getFrontmostBundleId()
+  return bundleId and ENABLED_APPS[bundleId] == true
+end
+
 local function updateStateOnFocus()
   if shouldEnableForFrontApp() then
     ctrlBracketHotkey:enable()
@@ -41,9 +40,7 @@ local function updateStateOnFocus()
   end
 end
 
-ctrlBracketHotkey = hs.hotkey.new({ "ctrl" }, "[", nil, handleCtrlBracketReleased)
-
-appFocusWatcher = hs.window.filter.new()
+local appFocusWatcher = hs.window.filter.new()
 appFocusWatcher:subscribe(hs.window.filter.windowFocused, updateStateOnFocus)
 
 updateStateOnFocus()
