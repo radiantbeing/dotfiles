@@ -20,6 +20,9 @@ set colorcolumn=100,120 " 텍스트 정렬을 위한 강조선
 set incsearch " 문자 입력에 따른 즉각적 검색
 set hlsearch " 검색 결과 강조
 
+" 구문 강조
+set regexpengine=0 " 정규 표현식 엔진 자동 선택
+
 " LSP
 packadd lsp
 
