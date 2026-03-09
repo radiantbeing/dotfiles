@@ -24,38 +24,40 @@ set hlsearch " 검색 결과 강조
 set regexpengine=0 " 정규 표현식 엔진 자동 선택
 
 " LSP
-packadd lsp
+if !has('ide') " Vim 또는 Neovim
+    packadd lsp
 
-call LspAddServer([#{
-    \   name: 'vimls',
-    \   filetype: 'vim',
-    \   path: 'vim-language-server',
-    \   args: ['--stdio']
-    \   }])
+    call LspAddServer([#{
+        \   name: 'vimls',
+        \   filetype: 'vim',
+        \   path: 'vim-language-server',
+        \   args: ['--stdio']
+        \   }])
 
-call LspAddServer([#{
-    \   name: 'typescriptlang',
-    \   filetype: ['javascript', 'typescript'],
-    \   path: 'typescript-language-server',
-    \   args: ['--stdio']
-    \   }])
+    call LspAddServer([#{
+        \   name: 'typescriptlang',
+        \   filetype: ['javascript', 'typescript'],
+        \   path: 'typescript-language-server',
+        \   args: ['--stdio']
+        \   }])
 
-nnoremap K <Cmd>LspHover<CR>
-nnoremap <C-]> <Cmd>LspGotoDefinition<CR>
-nnoremap gd <Cmd>execute v:count .. 'LspGotoDefinition'<CR>
-nnoremap <C-W>gd <Cmd>execute 'topleft ' .. v:count .. 'LspGotoDefinition'<CR>
-nnoremap g] <Cmd>LspPeekDefinition<CR>
-nnoremap gi <Cmd>LspGotoImpl<CR>
-nnoremap gt <Cmd>LspGotoTypeDef<CR>
+    nnoremap K <Cmd>LspHover<CR>
+    nnoremap <C-]> <Cmd>LspGotoDefinition<CR>
+    nnoremap gd <Cmd>execute v:count .. 'LspGotoDefinition'<CR>
+    nnoremap <C-W>gd <Cmd>execute 'topleft ' .. v:count .. 'LspGotoDefinition'<CR>
+    nnoremap g] <Cmd>LspPeekDefinition<CR>
+    nnoremap gi <Cmd>LspGotoImpl<CR>
+    nnoremap gt <Cmd>LspGotoTypeDef<CR>
 
-nnoremap gq <Plug>(LspFormat)
-xnoremap gq <Plug>(LspFormat)
+    nnoremap gq <Plug>(LspFormat)
+    xnoremap gq <Plug>(LspFormat)
 
-xnoremap <silent> <Leader>e <Cmd>LspSelectionExpand<CR>
-xnoremap <silent> <Leader>s <Cmd>LspSelectionShrink<CR>
+    xnoremap <silent> <Leader>e <Cmd>LspSelectionExpand<CR>
+    xnoremap <silent> <Leader>s <Cmd>LspSelectionShrink<CR>
 
-augroup LspCustom
-    autocmd!
-    autocmd CursorMoved * silent! LspDiag! current
-augroup END
+    augroup LspCustom
+        autocmd!
+        autocmd CursorMoved * silent! LspDiag! current
+    augroup END
+endif
 
