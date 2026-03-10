@@ -23,6 +23,9 @@ set hlsearch " 검색 결과 강조
 " 구문 강조
 set regexpengine=0 " 정규 표현식 엔진 자동 선택
 
+" 키 바인딩
+let mapleader = " " " Leader 키를 스페이스 바로 변경
+
 " LSP
 if !has('ide') " Vim 또는 Neovim
     packadd lsp
