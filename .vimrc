@@ -41,19 +41,32 @@ if !has('ide') " Vim 또는 Neovim
         \   args: ['--stdio']
         \   }])
 
+    nnoremap <Leader>cf <Cmd>LspFormat<CR>
+    xnoremap <Leader>cf <Cmd>LspFormat<CR>
+    nnoremap <Leader>cd <Cmd>LspDiag current<CR>
+    nnoremap ]d <Cmd>LspDiag nextWrap<CR>
+    nnoremap [d <Cmd>LspDiag prevWrap<CR>
+
+    nnoremap <Leader>cl <Cmd>LspShowAllServers<CR>
+    nnoremap gd <Cmd>LspGotoDefinition<CR>
+    nnoremap gr <Cmd>LspShowReferences<CR>
+    nnoremap gI <Cmd>LspGotoImpl<CR>
+    nnoremap gy <Cmd>LspGotoTypeDef<CR>
+    nnoremap gD <Cmd>LspGotoDeclaration<CR>
     nnoremap K <Cmd>LspHover<CR>
-    nnoremap <C-]> <Cmd>LspGotoDefinition<CR>
-    nnoremap gd <Cmd>execute v:count .. 'LspGotoDefinition'<CR>
-    nnoremap <C-W>gd <Cmd>execute 'topleft ' .. v:count .. 'LspGotoDefinition'<CR>
-    nnoremap g] <Cmd>LspPeekDefinition<CR>
-    nnoremap gi <Cmd>LspGotoImpl<CR>
-    nnoremap gt <Cmd>LspGotoTypeDef<CR>
-
-    nnoremap gq <Plug>(LspFormat)
-    xnoremap gq <Plug>(LspFormat)
-
-    xnoremap <silent> <Leader>e <Cmd>LspSelectionExpand<CR>
-    xnoremap <silent> <Leader>s <Cmd>LspSelectionShrink<CR>
+    nnoremap gK <Cmd>LspShowSignature<CR>
+    inoremap <C-K> <Cmd>LspShowSignature<CR>
+    nnoremap <Leader>ca <Cmd>LspCodeAction<CR>
+    xnoremap <Leader>ca <Cmd>LspCodeAction<CR>
+    nnoremap <Leader>cc <Cmd>LspCodeLens<CR>
+    xnoremap <Leader>cc <Cmd>LspCodeLens<CR>
+    nnoremap <Leader>cr <Cmd>LspRename<CR>
+    nnoremap ]] <Cmd>lnext<CR>
+    nnoremap [[ <Cmd>lprev<CR>
+    nnoremap <Leader>ss <Cmd>LspDocumentSymbol<CR>
+    nnoremap <Leader>sS <Cmd>LspSymbolSearch<CR>
+    nnoremap gai <Cmd>LspIncomingCalls<CR>
+    nnoremap gao <Cmd>LspOutgoingCalls<CR>
 
     augroup LspCustom
         autocmd!
