@@ -45,7 +45,7 @@ set regexpengine=0 " 정규 표현식 엔진 자동 선택
 let mapleader = " " " Leader 키를 스페이스 바로 변경
 
 " 검색 결과 강조 삭제
-nnoremap <Esc> <Cmd>nohlsearch<CR>
+nnoremap <Esc> <Cmd>nohlsearch<CR><Esc>
 
 " ----------------------------------------
 " LSP
@@ -70,36 +70,72 @@ if !has('ide') " Vim 또는 Neovim을 확인
         \   args: ['--stdio']
         \   }])
 
-    " Open diagnostic [Q]uickfix list
-    nnoremap <Leader>q <Cmd>LspDiag show<CR>
+    " Lsp Info
+    nnoremap <Leader>cl <Cmd>LspShowAllServers<CR>
 
-    " [G]oto [R]eferences
-    nnoremap grr <Cmd>LspShowReferences<CR>
+    " Goto Definition
+    nnoremap gd <Cmd>LspGotoDefinition<CR>
 
-    " [G]oto [I]mplementation
-    nnoremap gri <Cmd>LspGotoImpl<CR>
+    " References
+    nnoremap gr <Cmd>LspShowReferences<CR>
 
-    " [G]oto [D]efinition
-    nnoremap grd <Cmd>LspGotoDefinition<CR>
+    " Goto Implementation
+    nnoremap gI <Cmd>LspGotoImpl<CR>
 
-    " Open Document Symbols
-    nnoremap gO <Cmd>LspDocumentSymbol<CR>
+    " Goto T[y]pe Definition
+    nnoremap gy <Cmd>LspGotoTypeDef<CR>
 
-    " Search for Workspace Symbols
-    nnoremap gW <Cmd>LspSymbolSearch<CR>
+    " Goto Declaration
+    nnoremap gD <Cmd>LspGotoDeclaration<CR>
 
-    " [G]oto [T]ype Definition
-    nnoremap grt <Cmd>LspGotoTypeDef<CR>
+    " Hover
+    nnoremap K <Cmd>LspHover<CR>
 
-    " [R]e[n]ame
-    nnoremap grn <Cmd>LspRename<CR>
+    " Signature Help
+    nnoremap gK <Cmd>LspShowSignature<CR>
+    inoremap <C-K> <Cmd>LspShowSignature<CR>
 
-    " [G]oto Code [A]ction
-    nnoremap gra <Cmd>LspCodeAction<CR>
-    xnoremap gra <Cmd>LspCodeAction<CR>
+    " Code Action
+    nnoremap <Leader>ca <Cmd>LspCodeAction<CR>
+    xnoremap <Leader>ca <Cmd>LspCodeAction<CR>
 
-    " [G]oto [D]eclaration
-    nnoremap grD <Cmd>LspGotoDeclaration<CR>
+    " Run Codelens
+    nnoremap <Leader>cc <Cmd>LspCodeLens<CR>
+    xnoremap <Leader>cc <Cmd>LspCodeLens<CR>
+
+    " Rename
+    nnoremap <Leader>cr <Cmd>LspRename<CR>
+
+    " LSP Symbols
+    nnoremap <Leader>ss <Cmd>LspDocumentSymbol<CR>
+    
+    " LSP Workspace Symbols
+    nnoremap <Leader>sS <Cmd>LspSymbolSearch<CR>
+
+    " C[a]lls Incoming
+    nnoremap gai <Cmd>LspIncomingCalls<CR>
+
+    " C[a]lls Outgoing
+    nnoremap gao <Cmd>LspOutgoingCalls<CR>
+
+    " Format
+    nnoremap <Leader>cf <Cmd>LspFormat<CR>
+    xnoremap <Leader>cf <Cmd>LspFormat<CR>
+
+    " Diagnostics
+    nnoremap <Leader>sd <Cmd>LspDiag show<CR>
+
+    " Line Diagnostics
+    nnoremap <Leader>cd <Cmd>LspDiag current<CR>
+
+    " Next Diagnostic
+    nnoremap ]d <Cmd>LspDiag next<CR>
+
+    " Prev Diagnostic
+    nnoremap [d <Cmd>LspDiag prev<CR>
+
+    " Toggle Outline
+    nnoremap <Leader>cs <Cmd>LspOutline<CR>
 
     " 커서 이동 시 현재 줄의 진단 메시지 출력
     augroup LspCustom
