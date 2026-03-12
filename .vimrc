@@ -54,21 +54,28 @@ nnoremap <Esc> <Cmd>nohlsearch<CR><Esc>
 if !has('ide') " Vim 또는 Neovim을 확인
     packadd lsp " yegappan/lsp 플러그인 활성화
 
-    " Vim Scripts 언어 서버 구성
-    call LspAddServer([#{
-        \   name: 'vimls',
-        \   filetype: 'vim',
-        \   path: 'vim-language-server',
-        \   args: ['--stdio']
-        \   }])
-
-    " TypeScript·JavaScript 언어 서버 구성
-    call LspAddServer([#{
-        \   name: 'typescriptlang',
-        \   filetype: ['javascript', 'typescript'],
-        \   path: 'typescript-language-server',
-        \   args: ['--stdio']
-        \   }])
+    " 언어 서버 추가
+    call LspAddServer([
+      \ #{
+      \   name: 'vimls',
+      \   filetype: 'vim',
+      \   path: 'vim-language-server',
+      \   args: ['--stdio']
+      \ },
+      \ #{
+      \   name: 'typescriptlang',
+      \   filetype: ['javascript', 'typescript'],
+      \   path: 'typescript-language-server',
+      \   args: ['--stdio']
+      \ },
+      \ #{
+      \   name: 'markdownoxide',
+      \   filetype: ['markdown'],
+      \   path: 'markdown-oxide',
+      \   args: [],
+      \   runIfSearch: ['.git/', '.obsidian/', '.moxide.toml']
+      \ }
+      \ ])
 
     " Lsp Info
     nnoremap <Leader>cl <Cmd>LspShowAllServers<CR>
