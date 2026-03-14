@@ -69,13 +69,6 @@ if !has('ide') " Vim 또는 Neovim을 확인
       \   args: ['--stdio']
       \ },
       \ #{
-      \   name: 'markdownoxide',
-      \   filetype: ['markdown'],
-      \   path: 'markdown-oxide',
-      \   args: [],
-      \   runIfSearch: ['.git/', '.obsidian/', '.moxide.toml']
-      \ },
-      \ #{
       \   name: 'jdtls',
       \   filetype: ['java'],
       \   path: 'jdtls',
