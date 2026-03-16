@@ -64,7 +64,7 @@ if !has('ide') " Vim 또는 Neovim을 확인
       \ },
       \ #{
       \   name: 'typescriptlang',
-      \   filetype: ['javascript', 'typescript'],
+      \   filetype: ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'],
       \   path: 'typescript-language-server',
       \   args: ['--stdio']
       \ },
