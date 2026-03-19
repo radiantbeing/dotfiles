@@ -12,7 +12,9 @@ endif
 " 플러그인 목록
 call plug#begin()
 
-Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible' " Vim의 합리적인 기본값
+Plug 'sheerun/vim-polyglot' " 향상된 구문 강조·들여쓰기를 위한 언어 팩
+Plug 'sainnhe/sonokai' " Monokai Pro 기반의 색상 스키마
 
 call plug#end()
 
@@ -20,8 +22,12 @@ call plug#end()
 " 색상
 " ==========================================================
 
-colorscheme catppuccin_mocha " 어두운 보라색의 색 구성표
 set termguicolors " 24-bit 색상 사용
+
+let g:sonokai_style = 'andromeda' " 색상 스키마의 스타일
+let g:sonokai_better_performance = 1 " 색상 스키마 로드 시간 감소
+
+colorscheme sonokai " 색상 스키마 지정
 
 " ==========================================================
 " 탭과 공백
