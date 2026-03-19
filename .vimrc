@@ -1,4 +1,22 @@
 " ==========================================================
+" 플러그인
+" ==========================================================
+
+" vim-plug 자동 설치
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" 플러그인 목록
+call plug#begin()
+
+Plug 'tpope/vim-sensible'
+
+call plug#end()
+
+" ==========================================================
 " 색상
 " ==========================================================
 
