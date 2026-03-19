@@ -48,6 +48,7 @@ set cursorline " 현재 위치한 줄 강조 표시
 set lazyredraw " 필요한 경우에만 화면 갱신
 set showmatch " 대응하는 괄호 쌍 강조
 set colorcolumn=100,120 " 텍스트 정렬을 위한 강조선
+set mouse=a " 마우스 지원
 
 " ==========================================================
 " 검색
