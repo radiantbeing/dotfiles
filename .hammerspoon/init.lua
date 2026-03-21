@@ -7,6 +7,7 @@ local ENABLED_APPS = {
 }
 
 local INPUT_ENGLISH = "com.apple.keylayout.ABC"
+local INPUT_KOREAN = "com.apple.inputmethod.Korean.2SetKorean"
 
 local function switchToEnglishIfNeeded()
   if hs.keycodes.currentSourceID() ~= INPUT_ENGLISH then
@@ -44,3 +45,13 @@ local appFocusWatcher = hs.window.filter.new()
 appFocusWatcher:subscribe(hs.window.filter.windowFocused, updateStateOnFocus)
 
 updateStateOnFocus()
+
+hs.hotkey.bind({"shift"}, "space", function()
+    local currentSource = hs.keycodes.currentSourceID()
+
+    if currentSource == INPUT_ENGLISH then
+        hs.keycodes.currentSourceID(INPUT_KOREAN)
+    else
+        hs.keycodes.currentSourceID(INPUT_ENGLISH)
+    end
+end)
