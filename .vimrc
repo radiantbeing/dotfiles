@@ -26,6 +26,15 @@ set smartcase
 
 set mouse=a
 set undofile
+set undodir=$MYVIMDIR/undo//
+if !isdirectory(expand('$MYVIMDIR/undo'))
+  mkdir(expand('$MYVIMDIR/undo'))
+endif
+set directory=$MYVIMDIR/swap//
+if !isdirectory(expand('$MYVIMDIR/swap'))
+  mkdir(expand('$MYVIMDIR/swap'))
+endif
+
 set regexpengine=0
 set exrc
 set secure
