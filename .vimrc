@@ -45,9 +45,9 @@ g:maplocalleader = ' '
 # ==========================================================
 
 # `vim-plug`가 설치되어 있지 않으면 자동으로 설치한다.
-if empty(glob('~/.vim/autoload/plug.vim'))
+if empty(glob('$MYVIMDIR/autoload/plug.vim'))
     const repo_url = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    system($'curl -fLo ~/.vim/autoload/plug.vim --create-dirs {repo_url}')
+    system($'curl -fLo $MYVIMDIR/autoload/plug.vim --create-dirs {repo_url}')
     autocmd VimEnter * {
       PlugInstall --sync
       source $MYVIMRC
