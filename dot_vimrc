@@ -4,11 +4,9 @@
 "  / _, _/ ___ |/ /_/ // // ___ |/ /|  / / /  _| |/ / / / / / / /
 " /_/ |_/_/  |_/_____/___/_/  |_/_/ |_/ /_/  (_)___/_/_/ /_/ /_/
 
-vim9script
-
-# ==========================================================
-# 일반
-# ==========================================================
+" ==========================================================
+" 일반
+" ==========================================================
 
 set number
 set relativenumber
@@ -24,50 +22,38 @@ set hlsearch
 set ignorecase
 set smartcase
 
-set mouse=a
-set undofile
-set undodir=$MYVIMDIR/undo//
-if !isdirectory(expand('$MYVIMDIR/undo'))
-  mkdir(expand('$MYVIMDIR/undo'))
-endif
-set directory=$MYVIMDIR/swap//
-if !isdirectory(expand('$MYVIMDIR/swap'))
-  mkdir(expand('$MYVIMDIR/swap'))
-endif
-
-set regexpengine=0
 set exrc
 set secure
+
 set termguicolors
+set mouse=a
+set regexpengine=0
 
 colorscheme catppuccin
 
-# ==========================================================
-# 키 바인딩
-# ==========================================================
+" ==========================================================
+" 키 바인딩
+" ==========================================================
 
-g:mapleader = ' '
-g:maplocalleader = ' '
+let mapleader = ' '
+let maplocalleader = ' '
 
-# ==========================================================
-# 플러그인
-# ==========================================================
+" ==========================================================
+" 플러그인
+" ==========================================================
 
-# `vim-plug`가 설치되어 있지 않으면 자동으로 설치한다.
+" `vim-plug`가 설치되어 있지 않으면 자동으로 설치한다.
 if empty(glob('$MYVIMDIR/autoload/plug.vim'))
     const repo_url = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    system($'curl -fLo $MYVIMDIR/autoload/plug.vim --create-dirs {repo_url}')
-    autocmd VimEnter * {
-      PlugInstall --sync
-      source $MYVIMRC
-    }
+    silent execute '!curl -fLo $MYVIMDIR/autoload/plug.vim --create-dirs ' .. repo_url
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-# 나열된 플러그인을 설치한다.
-plug#begin()
+" 나열된 플러그인을 설치한다.
+call plug#begin()
 
 Plug 'tpope/vim-sensible'
 Plug 'sheerun/vim-polyglot'
 
-plug#end()
+call plug#end()
 
