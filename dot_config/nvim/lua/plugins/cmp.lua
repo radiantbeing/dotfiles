@@ -13,6 +13,7 @@ return {
                 nerd_font_variant = "normal",
             },
             completion = {
+                menu = { auto_show = false },
                 documentation = { auto_show = true },
                 accept = { auto_brackets = { enabled = false } },
             },
