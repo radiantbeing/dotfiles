@@ -36,15 +36,11 @@ set scrolloff=10
 set breakindent
 set list
 set showmatch
-set colorcolumn=100,120
-set noshowmode
+set colorcolumn=100
 
 set hlsearch
 set ignorecase
 set smartcase
-
-set exrc
-set secure
 
 set termguicolors
 set mouse=a
