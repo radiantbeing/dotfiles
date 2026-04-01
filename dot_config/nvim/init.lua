@@ -1,28 +1,16 @@
--- 일반
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.cursorline = true
-vim.opt.scrolloff = 10
-
--- 들여쓰기
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
-vim.opt.expandtab = true
-
--- 시각적 정보
 vim.opt.list = true
-vim.opt.signcolumn = "yes"
-vim.opt.showmatch = true
 vim.opt.colorcolumn = { 100 }
 
--- 키 맵
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.api.nvim_create_autocmd("PackChanged", {
+	group = vim.api.nvim_create_augroup("user-pack-changed", { clear = true }),
+	callback = function(event)
+		local name, kind = event.data.spec.name, event.data.kind
 
--- 진단 메시지 표시
-vim.diagnostic.config({
-    virtual_lines = { current_line = true },
+		-- Treesitter 언어 파서를 최신화한다.
+		if name == "nvim-treesitter" and kind == "update" then
+			vim.cmd("TSUpdate")
+		end
+	end,
 })
-
-require("config.lazy")
