@@ -1,4 +1,26 @@
 " ==========================================================
+" 일반
+" ==========================================================
+
+set number
+set relativenumber
+set cursorline
+set signcolumn=yes
+set scrolloff=10
+set breakindent
+set list
+set showmatch
+set colorcolumn=100
+
+set hlsearch
+set ignorecase
+set smartcase
+
+set termguicolors
+set mouse=a
+set regexpengine=0
+
+" ==========================================================
 " 키 바인딩
 " ==========================================================
 
@@ -23,28 +45,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 call plug#end()
-
-" ==========================================================
-" 옵션
-" ==========================================================
-
-set number
-set relativenumber
-set cursorline
-set signcolumn=yes
-set scrolloff=10
-set breakindent
-set list
-set showmatch
-set colorcolumn=100
-
-set hlsearch
-set ignorecase
-set smartcase
-
-set termguicolors
-set mouse=a
-set regexpengine=0
 
 " ==========================================================
 " 외형
