@@ -39,17 +39,17 @@ end, { desc = 'Print the git blame for the current line' })
 vim.cmd('packadd! nohlsearch')
 
 vim.pack.add({
+  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/nvim-telescope/telescope.nvim',
-  'https://github.com/folke/which-key.nvim',
+  { src = 'https://github.com/Saghen/blink.cmp', version = vim.version.range('1.*') },
   'https://github.com/neovim/nvim-lspconfig',
   'https://github.com/mason-org/mason.nvim',
-  'https://github.com/mason-org/mason-lspconfig.nvim',
-  'https://github.com/nvim-mini/mini.completion',
-  'https://github.com/nvim-mini/mini.icons',
-  'https://github.com/nvim-tree/nvim-web-devicons',
-  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" }
+  'https://github.com/mason-org/mason-lspconfig.nvim'
 })
+
+-- catppuccin
+vim.cmd.colorscheme('catppuccin-nvim')
 
 -- telescope
 local builtin = require('telescope.builtin')
@@ -58,18 +58,15 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope 실시�
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope 버퍼 목록' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope 도움말 검색' })
 
--- which key
-vim.keymap.set('n', '<leader>?', function()
-  require('which-key').show({ global = false })
-end, { desc = '버퍼 단축키 보기' })
+-- blink
+require('blink.cmp').setup({
+  keymap = { preset = 'default' },
+  appearance = { nerd_font_variant = 'normal' },
+  sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
+  fuzzy = { implementation = 'prefer_rust_with_warning' }
+})
 
 -- mason
 require('mason').setup({})
 require('mason-lspconfig').setup({})
-
--- mini
-require('mini.completion').setup({})
-
--- catppuccin
-vim.cmd.colorscheme('catppuccin-nvim')
 
