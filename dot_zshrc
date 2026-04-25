@@ -1,0 +1,6 @@
+#  컬러 출력
+export CLICOLOR=1
+
+# 자동 완성
+autoload -Uz compinit && compinit
+
