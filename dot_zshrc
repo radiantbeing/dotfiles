@@ -4,3 +4,6 @@ export CLICOLOR=1
 # 자동 완성
 autoload -Uz compinit && compinit
 
+# mise 활성화
+mise activate zsh
+
