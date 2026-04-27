@@ -44,5 +44,5 @@ Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 call plug#end()
 
-colorscheme catppuccin_mocha
+colorscheme catppuccin_frappe
 
