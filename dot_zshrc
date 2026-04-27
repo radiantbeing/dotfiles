@@ -5,5 +5,5 @@ export CLICOLOR=1
 autoload -Uz compinit && compinit
 
 # mise 활성화
-mise activate zsh
+eval "$(mise activate zsh)"
 
