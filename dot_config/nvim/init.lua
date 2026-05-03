@@ -15,14 +15,17 @@ vim.opt.colorcolumn = { 100 }
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-vim.o.confirm = true
-
 -- ---------------------------------------------------------
 -- KEYMAPS
 -- ---------------------------------------------------------
 
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = "\\"
+
+vim.keymap.set({ "n", "v" }, "<leader>y", "\"+y")
+vim.keymap.set({ "n", "v" }, "<leader>Y", "\"+Y")
+vim.keymap.set({ "n", "v" }, "<leader>p", "\"+p")
+vim.keymap.set({ "n", "v" }, "<leader>P", "\"+P")
 
 -- ---------------------------------------------------------
 -- PLUGINS
