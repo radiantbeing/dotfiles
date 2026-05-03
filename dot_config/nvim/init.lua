@@ -15,6 +15,8 @@ vim.opt.colorcolumn = { 100 }
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+vim.o.confirm = true
+
 -- ---------------------------------------------------------
 -- KEYMAPS
 -- ---------------------------------------------------------
@@ -22,17 +24,17 @@ vim.o.smartcase = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.keymap.set({ "n", "v" }, "<leader>y", "\"+y")
-vim.keymap.set({ "n", "v" }, "<leader>Y", "\"+Y")
-vim.keymap.set({ "n", "v" }, "<leader>p", "\"+p")
-vim.keymap.set({ "n", "v" }, "<leader>P", "\"+P")
+vim.keymap.set({ "n", "v" }, "<Leader>y", "\"+y")
+vim.keymap.set({ "n", "v" }, "<Leader>Y", "\"+Y")
+vim.keymap.set({ "n", "v" }, "<Leader>p", "\"+p")
+vim.keymap.set({ "n", "v" }, "<Leader>P", "\"+P")
 
 -- ---------------------------------------------------------
 -- PLUGINS
 -- ---------------------------------------------------------
 
 vim.pack.add({
-  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" }
+  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 })
 
 vim.cmd.colorscheme("catppuccin-frappe")
