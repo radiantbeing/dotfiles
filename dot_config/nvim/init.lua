@@ -11,10 +11,8 @@ vim.o.breakindent = true
 vim.o.list = true
 vim.o.showmatch = true
 vim.opt.colorcolumn = { 100 }
-
 vim.o.ignorecase = true
 vim.o.smartcase = true
-
 vim.o.confirm = true
 
 -- ---------------------------------------------------------
@@ -34,7 +32,7 @@ vim.keymap.set({ "n", "v" }, "<Leader>P", "\"+P")
 -- ---------------------------------------------------------
 
 vim.pack.add({
-  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
+  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" }
 })
 
 vim.cmd.colorscheme("catppuccin-frappe")
