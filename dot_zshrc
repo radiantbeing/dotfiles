@@ -1,10 +1,6 @@
 #  컬러 출력
 export CLICOLOR=1
 
-# 명령 별칭
-alias vi="nvim"
-alias vim="nvim"
-
 # 자동 완성
 autoload -Uz compinit && compinit
 
