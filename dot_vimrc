@@ -11,27 +11,30 @@ set breakindent
 set list
 set showmatch
 set colorcolumn=100
+set termguicolors
+set mouse=a
+set regexpengine=0
+set confirm
+
+" search
 
 set hlsearch
 set ignorecase
 set smartcase
+
+" tab
 
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 
-set termguicolors
-set mouse=a
-set regexpengine=0
-set confirm
-
 " ----------------------------------------------------------
 " KEYMAPS
 " ----------------------------------------------------------
 
 let mapleader = ' '
-let maplocalleader = ' '
+let maplocalleader = '\'
 
 " ----------------------------------------------------------
 " PLUGINS
@@ -47,7 +50,6 @@ call plug#begin()
 
 Plug 'tpope/vim-sensible'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-Plug 'yegappan/battleship'
 
 call plug#end()
 
