@@ -8,6 +8,10 @@
       "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
+    "mini.nvim": {
+      "rev": "199b3344d4c0dab13e45483834ce11bb7744fa3a",
+      "src": "https://github.com/nvim-mini/mini.nvim"
+    },
     "neovim-ayu": {
       "rev": "e5a9f0fa2918d6b5f57c21b3ac014314ee5e41c8",
       "src": "https://github.com/shatur/neovim-ayu"

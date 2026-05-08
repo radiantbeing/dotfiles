@@ -32,6 +32,26 @@ vim.o.expandtab = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- lsp
+
+vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
+vim.keymap.set("n", "gy", vim.lsp.buf.type_definition)
+vim.keymap.set("n", "gI", vim.lsp.buf.implementation)
+vim.keymap.set("n", "cd", vim.lsp.buf.rename)
+vim.keymap.set("n", "gA", vim.lsp.buf.references)
+vim.keymap.set("n", "gs", vim.lsp.buf.document_symbol)
+vim.keymap.set("n", "gS", vim.lsp.buf.workspace_symbol)
+vim.keymap.set("n", "gh", vim.lsp.buf.hover)
+vim.keymap.set("n", "g.", vim.lsp.buf.code_action)
+
+-- picker
+
+vim.keymap.set("n", "<Leader>ff", function () MiniPick.builtin.files() end)
+vim.keymap.set("n", "<Leader>fg", function () MiniPick.builtin.grep_live() end)
+vim.keymap.set("n", "<Leader>fb", function () MiniPick.builtin.buffers() end)
+vim.keymap.set("n", "<Leader>fh", function () MiniPick.builtin.help() end)
+
 -- ---------------------------------------------------------
 -- LSP
 -- ---------------------------------------------------------
@@ -48,7 +68,8 @@ vim.pack.add({
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
-  { src = "https://github.com/folke/lazydev.nvim" }
+  { src = "https://github.com/folke/lazydev.nvim" },
+  { src = "https://github.com/nvim-mini/mini.nvim" }
 })
 
 -- colorscheme
@@ -66,10 +87,12 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "lua",
   callback = function ()
     require("lazydev").setup({
-      library = {
-        { path = "luvit-meta/library", words = { "vim%.uv" } }
-      }
+      library = { { path = "luvit-meta/library", words = { "vim%.uv" } } }
     })
   end
 })
+
+-- Mini
+
+require("mini.pick").setup()
 
