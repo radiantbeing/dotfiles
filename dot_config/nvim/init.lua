@@ -57,6 +57,8 @@ vim.keymap.set("n", "<Leader>fh", function () MiniPick.builtin.help() end)
 -- AUTOCOMMANDS
 -- ---------------------------------------------------------
 
+-- lazydev
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "lua",
   callback = function ()
@@ -68,6 +70,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end
 })
 
+
+-- treesitter
+
 vim.api.nvim_create_autocmd("PackChanged", {
   callback = function (event)
     local name = event.data.spec.name
@@ -77,8 +82,9 @@ vim.api.nvim_create_autocmd("PackChanged", {
         vim.cmd.packadd("nvim-treesitter")
       end
       vim.cmd("TSUpdate")
+    end
   end
-end })
+})
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {
