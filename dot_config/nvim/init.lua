@@ -12,6 +12,7 @@ vim.o.list = true
 vim.o.showmatch = true
 vim.opt.colorcolumn = { 100 }
 vim.o.confirm = true
+vim.o.foldlevelstart = 99
 
 -- search
 
@@ -53,6 +54,51 @@ vim.keymap.set("n", "<Leader>fb", function () MiniPick.builtin.buffers() end)
 vim.keymap.set("n", "<Leader>fh", function () MiniPick.builtin.help() end)
 
 -- ---------------------------------------------------------
+-- AUTOCOMMANDS
+-- ---------------------------------------------------------
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "lua",
+  callback = function ()
+    require("lazydev").setup({
+      library = {
+        { path = "luvit-meta/library", words = { "vim%.uv" } }
+      }
+    })
+  end
+})
+
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function (event)
+    local name = event.data.spec.name
+    local kind = event.data.kind
+    if name == "nvim-treesitter" and kind == "update" then
+      if not event.data.active then
+        vim.cmd.packadd("nvim-treesitter")
+      end
+      vim.cmd("TSUpdate")
+  end
+end })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "lua",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  },
+  callback = function ()
+    -- highlighting
+    vim.treesitter.start()
+
+    -- folds
+    vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    vim.wo[0][0].foldmethod = 'expr'
+  end
+})
+
+-- ---------------------------------------------------------
 -- LSP
 -- ---------------------------------------------------------
 
@@ -69,7 +115,8 @@ vim.pack.add({
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/folke/lazydev.nvim" },
-  { src = "https://github.com/nvim-mini/mini.nvim" }
+  { src = "https://github.com/nvim-mini/mini.nvim" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter" }
 })
 
 -- colorscheme
@@ -81,18 +128,21 @@ require("ayu").colorscheme()
 
 require("lualine").setup({ options = { theme = "ayu_mirage" } })
 
--- lazydev
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "lua",
-  callback = function ()
-    require("lazydev").setup({
-      library = { { path = "luvit-meta/library", words = { "vim%.uv" } } }
-    })
-  end
-})
-
--- Mini
+-- mini
 
 require("mini.pick").setup()
+require("mini.indentscope").setup({
+  symbol = "│",
+  options = { try_as_border = true }
+})
+
+-- treesitter
+
+require("nvim-treesitter").install({
+  "lua",
+  "javascript",
+  "jsx",
+  "typescript",
+  "tsx"
+})
 
