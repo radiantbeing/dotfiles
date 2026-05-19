@@ -13,6 +13,7 @@ vim.o.showmatch = true
 vim.opt.colorcolumn = { 100 }
 vim.o.confirm = true
 vim.o.foldlevelstart = 99
+vim.o.winborder = "single"
 
 -- search
 
@@ -52,6 +53,14 @@ vim.keymap.set("n", "<Leader>ff", function () MiniPick.builtin.files() end)
 vim.keymap.set("n", "<Leader>fg", function () MiniPick.builtin.grep_live() end)
 vim.keymap.set("n", "<Leader>fb", function () MiniPick.builtin.buffers() end)
 vim.keymap.set("n", "<Leader>fh", function () MiniPick.builtin.help() end)
+
+-- ---------------------------------------------------------
+-- DIAGNOSTIC
+-- ---------------------------------------------------------
+
+vim.diagnostic.config({
+  virtual_lines = { current_line = true }
+})
 
 -- ---------------------------------------------------------
 -- AUTOCOMMANDS
@@ -122,7 +131,8 @@ vim.pack.add({
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/folke/lazydev.nvim" },
   { src = "https://github.com/nvim-mini/mini.nvim" },
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter" }
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+  { src = "https://github.com/lewis6991/gitsigns.nvim" }
 })
 
 -- colorscheme
