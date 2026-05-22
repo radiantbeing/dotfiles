@@ -46,13 +46,14 @@ vim.keymap.set("n", "gs", vim.lsp.buf.document_symbol)
 vim.keymap.set("n", "gS", vim.lsp.buf.workspace_symbol)
 vim.keymap.set("n", "gh", vim.lsp.buf.hover)
 vim.keymap.set("n", "g.", vim.lsp.buf.code_action)
+vim.keymap.set({ "n", "x" }, "<Leader>cf", vim.lsp.buf.format)
 
 -- picker
 
-vim.keymap.set("n", "<Leader>ff", function () MiniPick.builtin.files() end)
-vim.keymap.set("n", "<Leader>fg", function () MiniPick.builtin.grep_live() end)
-vim.keymap.set("n", "<Leader>fb", function () MiniPick.builtin.buffers() end)
-vim.keymap.set("n", "<Leader>fh", function () MiniPick.builtin.help() end)
+vim.keymap.set("n", "<Leader>ff", function() MiniPick.builtin.files() end)
+vim.keymap.set("n", "<Leader>fg", function() MiniPick.builtin.grep_live() end)
+vim.keymap.set("n", "<Leader>fb", function() MiniPick.builtin.buffers() end)
+vim.keymap.set("n", "<Leader>fh", function() MiniPick.builtin.help() end)
 
 -- ---------------------------------------------------------
 -- DIAGNOSTIC
@@ -70,7 +71,7 @@ vim.diagnostic.config({
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "lua",
-  callback = function ()
+  callback = function()
     require("lazydev").setup({
       library = {
         { path = "luvit-meta/library", words = { "vim%.uv" } }
@@ -83,7 +84,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- treesitter
 
 vim.api.nvim_create_autocmd("PackChanged", {
-  callback = function (event)
+  callback = function(event)
     local name = event.data.spec.name
     local kind = event.data.kind
     if name == "nvim-treesitter" and kind == "update" then
@@ -103,7 +104,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "typescript",
     "typescriptreact"
   },
-  callback = function ()
+  callback = function()
     -- highlighting
     vim.treesitter.start()
 
@@ -119,6 +120,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("ts_ls")
+vim.lsp.enable("eslint")
 
 -- ---------------------------------------------------------
 -- PLUGINS
@@ -161,4 +163,3 @@ require("nvim-treesitter").install({
   "typescript",
   "tsx"
 })
-
