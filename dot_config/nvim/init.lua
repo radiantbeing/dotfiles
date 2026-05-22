@@ -46,21 +46,28 @@ vim.keymap.set("n", "gs", vim.lsp.buf.document_symbol)
 vim.keymap.set("n", "gS", vim.lsp.buf.workspace_symbol)
 vim.keymap.set("n", "gh", vim.lsp.buf.hover)
 vim.keymap.set("n", "g.", vim.lsp.buf.code_action)
-vim.keymap.set({ "n", "x" }, "<Leader>cf", vim.lsp.buf.format)
 
 -- picker
 
-vim.keymap.set("n", "<Leader>ff", function() MiniPick.builtin.files() end)
-vim.keymap.set("n", "<Leader>fg", function() MiniPick.builtin.grep_live() end)
-vim.keymap.set("n", "<Leader>fb", function() MiniPick.builtin.buffers() end)
-vim.keymap.set("n", "<Leader>fh", function() MiniPick.builtin.help() end)
+vim.keymap.set("n", "<Leader>ff", function()
+  MiniPick.builtin.files()
+end)
+vim.keymap.set("n", "<Leader>fg", function()
+  MiniPick.builtin.grep_live()
+end)
+vim.keymap.set("n", "<Leader>fb", function()
+  MiniPick.builtin.buffers()
+end)
+vim.keymap.set("n", "<Leader>fh", function()
+  MiniPick.builtin.help()
+end)
 
 -- ---------------------------------------------------------
 -- DIAGNOSTIC
 -- ---------------------------------------------------------
 
 vim.diagnostic.config({
-  virtual_lines = { current_line = true }
+  virtual_lines = { current_line = true },
 })
 
 -- ---------------------------------------------------------
@@ -74,12 +81,11 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     require("lazydev").setup({
       library = {
-        { path = "luvit-meta/library", words = { "vim%.uv" } }
-      }
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
     })
-  end
+  end,
 })
-
 
 -- treesitter
 
@@ -93,7 +99,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
       end
       vim.cmd("TSUpdate")
     end
-  end
+  end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -102,16 +108,16 @@ vim.api.nvim_create_autocmd("FileType", {
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
   },
   callback = function()
     -- highlighting
     vim.treesitter.start()
 
     -- folds
-    vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-    vim.wo[0][0].foldmethod = 'expr'
-  end
+    vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    vim.wo[0][0].foldmethod = "expr"
+  end,
 })
 
 -- ---------------------------------------------------------
@@ -134,7 +140,8 @@ vim.pack.add({
   { src = "https://github.com/folke/lazydev.nvim" },
   { src = "https://github.com/nvim-mini/mini.nvim" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-  { src = "https://github.com/lewis6991/gitsigns.nvim" }
+  { src = "https://github.com/lewis6991/gitsigns.nvim" },
+  { src = "https://github.com/stevearc/conform.nvim" },
 })
 
 -- colorscheme
@@ -151,7 +158,7 @@ require("lualine").setup({ options = { theme = "ayu_mirage" } })
 require("mini.pick").setup()
 require("mini.indentscope").setup({
   symbol = "│",
-  options = { try_as_border = true }
+  options = { try_as_border = true },
 })
 
 -- treesitter
@@ -161,5 +168,21 @@ require("nvim-treesitter").install({
   "javascript",
   "jsx",
   "typescript",
-  "tsx"
+  "tsx",
+})
+
+-- conform
+
+require("conform").setup({
+  formatters_by_ft = {
+    lua = { "stylua" },
+    javascript = { "prettier" },
+    javascriptreact = { "prettier" },
+    typescript = { "prettier" },
+    typescriptreact = { "prettier" },
+  },
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_format = "fallback",
+  },
 })
