@@ -156,10 +156,6 @@ require("lualine").setup({ options = { theme = "ayu_mirage" } })
 -- mini
 
 require("mini.pick").setup()
-require("mini.indentscope").setup({
-  symbol = "│",
-  options = { try_as_border = true },
-})
 
 -- treesitter
 
@@ -169,20 +165,4 @@ require("nvim-treesitter").install({
   "jsx",
   "typescript",
   "tsx",
-})
-
--- conform
-
-require("conform").setup({
-  formatters_by_ft = {
-    lua = { "stylua" },
-    javascript = { "prettier" },
-    javascriptreact = { "prettier" },
-    typescript = { "prettier" },
-    typescriptreact = { "prettier" },
-  },
-  format_on_save = {
-    timeout_ms = 500,
-    lsp_format = "fallback",
-  },
 })
