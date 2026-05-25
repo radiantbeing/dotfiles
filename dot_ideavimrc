@@ -1,9 +1,0 @@
-set number
-set relativenumber
-set scrolloff=10
-set incsearch
-set hlsearch
-set ignorecase
-set smartcase
-set list
-
