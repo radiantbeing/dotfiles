@@ -133,7 +133,7 @@ vim.lsp.enable("eslint")
 -- ---------------------------------------------------------
 
 vim.pack.add({
-  { src = "https://github.com/shatur/neovim-ayu" },
+  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
@@ -146,12 +146,15 @@ vim.pack.add({
 
 -- colorscheme
 
-require("ayu").setup({ mirage = true })
-require("ayu").colorscheme()
+require("catppuccin").setup({
+  transparent_background = true
+})
+
+vim.cmd.colorscheme("catppuccin-frappe")
 
 -- lualine
 
-require("lualine").setup({ options = { theme = "ayu_mirage" } })
+require("lualine").setup()
 
 -- mini
 
