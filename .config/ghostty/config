@@ -4,6 +4,6 @@ font-family = "Symbols Nerd Font"
 font-size = 18
 font-thicken = true
 background-opacity = 0.9
-background-blur = true
+background-blur = macos-glass-clear
 macos-option-as-alt = true
 
