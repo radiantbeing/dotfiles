@@ -3,7 +3,7 @@ font-family = "Sarasa Mono K"
 font-family = "Symbols Nerd Font"
 font-size = 18
 font-thicken = true
-background-opacity = 0.9
-background-blur = macos-glass-clear
+background-opacity = 0.6
+background-blur = macos-glass-regular
 macos-option-as-alt = true
 
