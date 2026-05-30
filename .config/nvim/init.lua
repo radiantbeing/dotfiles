@@ -127,6 +127,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("eslint")
+vim.lsp.enable("jsonls")
 
 -- ---------------------------------------------------------
 -- PLUGINS
@@ -147,7 +148,7 @@ vim.pack.add({
 -- colorscheme
 
 require("catppuccin").setup({
-  transparent_background = true
+  transparent_background = true,
 })
 
 vim.cmd.colorscheme("catppuccin-nvim")
@@ -168,4 +169,6 @@ require("nvim-treesitter").install({
   "jsx",
   "typescript",
   "tsx",
+  "jsdoc",
+  "json",
 })
