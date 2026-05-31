@@ -47,32 +47,57 @@ vim.keymap.set("n", "gS", vim.lsp.buf.workspace_symbol)
 vim.keymap.set("n", "gh", vim.lsp.buf.hover)
 vim.keymap.set("n", "g.", vim.lsp.buf.code_action)
 
--- picker
-
-vim.keymap.set("n", "<Leader>ff", function()
-  MiniPick.builtin.files()
-end)
-vim.keymap.set("n", "<Leader>fg", function()
-  MiniPick.builtin.grep_live()
-end)
-vim.keymap.set("n", "<Leader>fb", function()
-  MiniPick.builtin.buffers()
-end)
-vim.keymap.set("n", "<Leader>fh", function()
-  MiniPick.builtin.help()
-end)
-
 -- ---------------------------------------------------------
 -- DIAGNOSTIC
 -- ---------------------------------------------------------
 
 vim.diagnostic.config({
-  virtual_lines = { current_line = true },
+  virtual_text = { current_line = true },
 })
 
 -- ---------------------------------------------------------
 -- AUTOCOMMANDS
 -- ---------------------------------------------------------
+
+-- ---------------------------------------------------------
+-- LSP
+-- ---------------------------------------------------------
+
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("ts_ls")
+vim.lsp.enable("eslint")
+vim.lsp.enable("jsonls")
+
+-- ---------------------------------------------------------
+-- PLUGINS
+-- ---------------------------------------------------------
+
+vim.pack.add({
+  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
+  { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+  { src = "https://github.com/nvim-lualine/lualine.nvim" },
+  { src = "https://github.com/neovim/nvim-lspconfig" },
+  { src = "https://github.com/folke/lazydev.nvim" },
+  { src = "https://github.com/nvim-mini/mini.nvim" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+  { src = "https://github.com/lewis6991/gitsigns.nvim" },
+  { src = "https://github.com/stevearc/conform.nvim" },
+  { src = "https://github.com/nvim-lua/plenary.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope.nvim" },
+  { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
+})
+
+-- colorscheme
+
+require("catppuccin").setup({
+  transparent_background = true,
+})
+
+vim.cmd.colorscheme("catppuccin-nvim")
+
+-- lualine
+
+require("lualine").setup({})
 
 -- lazydev
 
@@ -86,6 +111,10 @@ vim.api.nvim_create_autocmd("FileType", {
     })
   end,
 })
+
+-- mini
+
+require("mini.pick").setup()
 
 -- treesitter
 
@@ -120,49 +149,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- ---------------------------------------------------------
--- LSP
--- ---------------------------------------------------------
-
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("ts_ls")
-vim.lsp.enable("eslint")
-vim.lsp.enable("jsonls")
-
--- ---------------------------------------------------------
--- PLUGINS
--- ---------------------------------------------------------
-
-vim.pack.add({
-  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
-  { src = "https://github.com/nvim-tree/nvim-web-devicons" },
-  { src = "https://github.com/nvim-lualine/lualine.nvim" },
-  { src = "https://github.com/neovim/nvim-lspconfig" },
-  { src = "https://github.com/folke/lazydev.nvim" },
-  { src = "https://github.com/nvim-mini/mini.nvim" },
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-  { src = "https://github.com/lewis6991/gitsigns.nvim" },
-  { src = "https://github.com/stevearc/conform.nvim" },
-})
-
--- colorscheme
-
-require("catppuccin").setup({
-  transparent_background = true,
-})
-
-vim.cmd.colorscheme("catppuccin-nvim")
-
--- lualine
-
-require("lualine").setup({})
-
--- mini
-
-require("mini.pick").setup()
-
--- treesitter
-
 require("nvim-treesitter").install({
   "lua",
   "javascript",
@@ -172,3 +158,24 @@ require("nvim-treesitter").install({
   "jsdoc",
   "json",
 })
+
+-- telescope
+
+vim.api.nvim_create_autocmd("PackChanged", {
+  callback = function(event)
+    local name = event.data.spec.name
+    local kind = event.data.kind
+    if name == "telescope-fzf-native.nvim" and (kind == "install" or kind == "update") then
+      vim.system({ "make" }, { cwd = event.data.path }):wait()
+    end
+  end,
+})
+
+require("telescope").setup({})
+require("telescope").load_extension("fzf")
+
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<Leader>ff", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<Leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<Leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<Leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
