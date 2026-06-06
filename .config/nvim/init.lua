@@ -98,26 +98,15 @@ vim.api.nvim_create_autocmd("PackChanged", {
 -- ---------------------------------------------------------
 
 vim.pack.add({
-  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
-  { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
+  { src = "https://github.com/nvim-tree/nvim-web-devicons" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/folke/lazydev.nvim" },
-  { src = "https://github.com/lewis6991/gitsigns.nvim" },
-  { src = "https://github.com/stevearc/conform.nvim" },
+  { src = "https://github.com/arborist-ts/arborist.nvim" },
   { src = "https://github.com/nvim-lua/plenary.nvim" },
   { src = "https://github.com/nvim-telescope/telescope.nvim" },
   { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
-  { src = "https://github.com/arborist-ts/arborist.nvim" },
 })
-
--- colorscheme
-
-require("catppuccin").setup({
-  transparent_background = true,
-})
-
-vim.cmd.colorscheme("catppuccin-nvim")
 
 -- lualine
 
