@@ -70,7 +70,7 @@ vim.pack.add({
   { src = "https://github.com/nvim-telescope/telescope.nvim" },
   { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
-  { src = "https://github.com/navarasu/onedark.nvim" },
+  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
 })
 
 -- lazydev ---------------------------------------------------------------------
@@ -115,10 +115,7 @@ require("arborist").setup()
 
 -- Colorscheme -----------------------------------------------------------------
 
-require("onedark").setup({
-  style = "dark"
-})
-require("onedark").load()
+vim.cmd.colorscheme("catppuccin-nvim")
 
 -- Lualine --------------------------------------------------------------------
 
