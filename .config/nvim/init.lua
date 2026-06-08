@@ -69,8 +69,8 @@ vim.pack.add({
   { src = "https://github.com/nvim-lua/plenary.nvim" },
   { src = "https://github.com/nvim-telescope/telescope.nvim" },
   { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
-  { src = "https://github.com/rebelot/kanagawa.nvim" },
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
+  { src = "https://github.com/navarasu/onedark.nvim" },
 })
 
 -- lazydev ---------------------------------------------------------------------
@@ -115,7 +115,10 @@ require("arborist").setup()
 
 -- Colorscheme -----------------------------------------------------------------
 
-vim.cmd.colorscheme("kanagawa")
+require("onedark").setup({
+  style = "dark"
+})
+require("onedark").load()
 
 -- Lualine --------------------------------------------------------------------
 
