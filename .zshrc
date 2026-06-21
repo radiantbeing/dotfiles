@@ -12,9 +12,6 @@ alias vim="nvim"
 # 자동 완성
 autoload -Uz compinit && compinit
 
-# mise 활성화
-eval "$(mise activate zsh)"
-
 # starship 활성화
 eval "$(starship init zsh)"
 
