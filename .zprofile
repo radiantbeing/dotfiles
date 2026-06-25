@@ -1,5 +1,4 @@
-eval "$(/opt/homebrew/bin/brew shellenv zsh)"
-
+eval "$(brew shellenv)"
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
