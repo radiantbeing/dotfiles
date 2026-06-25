@@ -1,6 +1,9 @@
 # 컬러 출력
 export CLICOLOR=1
 
+# rustup
+export PATH="$(brew --prefix rustup)/bin:$PATH"
+
 # 기본 에디터
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -16,7 +19,8 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 
 # 자동 완성
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+compinit
 
 # starship 활성화
 eval "$(starship init zsh)"
