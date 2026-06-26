@@ -1,5 +1,4 @@
 export PATH="$(brew --prefix rustup)/bin:$PATH"
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # 컬러 출력
 export CLICOLOR=1
