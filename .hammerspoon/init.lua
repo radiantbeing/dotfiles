@@ -8,6 +8,7 @@ local TARGET_APPLICATIONS = {
   "dev.zed.Zed",
   "md.obsidian",
   "org.jkiss.dbeaver.core.product",
+  "org.alacritty",
 }
 
 hs.hotkey.bind({ "ctrl" }, "[", nil, function()
