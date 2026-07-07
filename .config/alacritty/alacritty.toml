@@ -1,7 +1,0 @@
-[general]
-import = ["catppuccin-mocha.toml"]
-
-[font]
-normal = { family = "Sarasa Mono K Nerd Font" }
-size = 18.0
-
