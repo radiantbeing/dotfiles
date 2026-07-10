@@ -2,13 +2,8 @@ local vim = require("Spoons.vim")
 
 local TARGET_APPLICATIONS = {
   "com.google.Chrome",
-  "com.jetbrains.intellij",
-  "com.microsoft.VSCode",
-  "com.mitchellh.ghostty",
-  "dev.zed.Zed",
-  "md.obsidian",
-  "org.jkiss.dbeaver.core.product",
-  "org.alacritty",
+  "net.kovidgoyal.kitty",
+  "org.mozilla.firefox",
 }
 
 hs.hotkey.bind({ "ctrl" }, "[", nil, function()
