@@ -1,6 +1,6 @@
-local vim = require("Spoons.vim")
+local ime = require("Spoons.ime")
 
-vim.enableFor({
+ime.enableFor({
   "com.google.Chrome",
   "net.kovidgoyal.kitty",
   "org.mozilla.firefox",
